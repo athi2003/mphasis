@@ -1,0 +1,78 @@
+package com.springJDBC;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.springJDBC.dao.StudentDao;
+import com.springJDBC.entities.Student;
+
+public class App {
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("configJDBC.xml");
+		StudentDao studentDao = context.getBean("studentDao", StudentDao.class);
+
+		// ----Student record Insertion---//
+
+		/*
+		 * Student student=new Student(); student.setId(105);
+		 * student.setName("Shashwat"); student.setCity("Bangalore"); //int result =
+		 * studentDao.insert(student); //System.out.println(result +" student added");
+		 */
+		/*
+		 * // -----Student data Update-----//
+		 * 
+		 * Student student=new Student();
+		 *  student.setId(105);
+		 * student.setName("Bharat kumar");
+		 *  student.setCity("kolkata");
+		 * 
+		 * int result = studentDao.updateStudent(student); System.out.println(result +
+		 * " Student data has been changed");
+		 */
+
+		/*
+		 * //---Student record Deleted-----//
+		 * 
+		 * int result = studentDao.deleteStudent(105); System.out.println(
+		 * result+" Student record deleted");
+		 */
+		/*
+		 * //---Select Single data from RowMapper--//
+		 * 
+		 * Student student=(Student) studentDao.selectStudent(105);
+		 * System.out.println(student);
+		 */
+		// ----Select All Student---//
+
+		 List<Student>students=studentDao.selectAllStudent();
+		 for(Student s:students)
+		 {
+		 System.out.println(s);
+		 }
+
+		// ----BatchUpdate---//
+		/*Student s1 = new Student();
+		s1.setCity("Bombay");
+		s1.setId(101);
+		
+		Student s2 = new Student();
+		s2.setCity("Delhi");
+		s2.setId(104);
+		
+		Student s3 = new Student();
+		s3.setCity("Kolkataasdfghhjklzxcvbnmqwerty");
+		s3.setId(105);
+		
+		List<Student> students = new ArrayList<Student>();
+		students.add(s1);
+		students.add(s2);
+		students.add(s3);
+		studentDao.updateStudentBatch(students);*/
+
+	}
+}

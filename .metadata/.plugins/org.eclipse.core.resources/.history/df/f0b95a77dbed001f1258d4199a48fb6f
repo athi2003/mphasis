@@ -1,0 +1,17 @@
+package com.example.demo;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class Test {  
+    public static void main(String[] args) {  
+        // Use AnnotationConfigApplicationContext to load Java configuration classes
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class, AppConfig1.class);
+        
+        // Retrieve the student bean
+        Student student = context.getBean(Student.class);  
+        student.displayInfo();  // This should display "Student Info"
+        
+        // Close the context when done
+        context.close();
+    }  
+}

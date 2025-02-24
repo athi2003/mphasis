@@ -1,0 +1,89 @@
+package com.springJDBC.dao;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.springJDBC.entities.Student;
+
+public class StudentDaoImpl implements StudentDao {
+
+	private JdbcTemplate jdbcTemplate;
+
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
+	
+	/*
+	 * @Override public int insert(Student student) { String query =
+	 * "insert into student values(?,?,?)"; int r =
+	 * this.jdbcTemplate.update(query,student.getId(),student.getName(),student.
+	 * getCity()); return r; }
+	 * 
+	 */
+	
+	/*
+	 * @Override public int updateStudent(Student student) { String
+	 * query="update student set sname=?, city=? where id=?"; int
+	 * r=this.jdbcTemplate.update(query,student.getName(),student.getCity(),student.
+	 * getId()); return r; }
+	 */
+
+	
+	/*
+	 * @Override public int deleteStudent(int studentId) { String
+	 * query="delete from student where id=?"; int r =
+	 * this.jdbcTemplate.update(query,studentId); return r; }
+	 */
+	
+	 
+	  
+	/*
+	 * @Override public Student selectStudent(int studentId) { String
+	 * query="select * from student where id=?"; RowMapper<Student> rowMapper=new
+	 * RowMapperImpl(); Student student =
+	 * this.jdbcTemplate.queryForObject(query,rowMapper,studentId);
+	 * 
+	 * return student; }
+	 */
+	  
+	  
+	 
+
+	
+	  @Override 
+	  public List<Student> selectAllStudent() { 
+	  String query = "select * from student"; 
+	  List<Student> students = this.jdbcTemplate.query(query, new RowMapperImpl());
+	  return students; 
+	  }
+	 
+
+	
+	/*
+	 * @Transactional public int updateStudentBatch(List<Student> students) { String
+	 * sql="update student set city = ? where id = ?"; jdbcTemplate.batchUpdate(sql,
+	 * new BatchPreparedStatementSetter() { public void setValues(PreparedStatement
+	 * ps,int index) throws SQLException {
+	 * ps.setString(1,students.get(index).getCity());
+	 * ps.setInt(2,students.get(index).getId());
+	 * System.out.println("Inside setValues method" ); }
+	 * 
+	 * @Override public int getBatchSize() {
+	 * System.out.println("Inside getBatchSize method : "+students.size()); return
+	 * students.size(); }
+	 * 
+	 * } ); return 0; }
+	 */
+}

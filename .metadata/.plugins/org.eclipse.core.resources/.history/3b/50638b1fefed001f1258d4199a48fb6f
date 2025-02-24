@@ -1,0 +1,12 @@
+package com.example.demo;
+
+public class Address {
+	Student student;
+	Address(Student student){
+		this.student=student;
+	}
+public void set(Student student) {
+	this.student=student;
+	
+}
+}
